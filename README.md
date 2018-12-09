@@ -9,5 +9,6 @@ html, css, javascript, python, Flask
 * Users can check all available prices and waiting time by click one button.
 * Can have via locations between start and destination.
 * Autocomplete functionality for input boxes.
+* Routemap shows the optimatic driving route.
 * Login in functionality using google, save favoriate places for users. 
 
