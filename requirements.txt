@@ -1,0 +1,11 @@
+#Add Application Requirements here
+
+Flask
+requests
+flask_oauth
+Flask-PyMongo
+googlemaps
+geopy
+rauth
+responses
+simplejson

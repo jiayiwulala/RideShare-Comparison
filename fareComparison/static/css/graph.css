@@ -1,0 +1,91 @@
+#canvas-map{
+	width:60%;
+	height:400px;
+	float:left;
+	padding-top :15px;
+}
+
+#routePlan{
+	width:40%;
+	height:auto;
+	float:left;
+	padding-top :15px;
+}
+
+#rateChart{
+	padding : 20px;
+}
+
+#uber_lyft_chart{
+
+	height:300px;
+
+}
+
+.leftalign-ul{
+    text-align:left;
+}
+
+#ulbuttons{
+	width:40%;
+	height:90px;
+	float:left;
+	padding:3%;
+	text-align: center;
+}
+
+@media (min-width: 768px)
+.order-1-md {
+    -webkit-box-ordinal-group: 2;
+    order: 1;
+}
+
+.bg-pink {
+    background-color: #FF00BF;
+	padding: 11px 20px;
+	font-size: 14px;
+	line-height: 18px;
+    position: relative;
+
+}
+
+.text-white {
+    color: #FFFFFF;
+}
+
+#uber-btn {
+	color: #FFFFFF;
+    font-family: ff-clan-web-pro, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 20px;
+    border-radius: 0px;
+    border: 2px solid #11939A;
+    text-transform: uppercase;
+    outline: none;
+    line-height: 18px;
+    position: relative;
+	background-color: #11939A;
+	margin-right:10px;
+}
+
+.preloader{
+  background:rgba(255,255,255,0.9);
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  z-index:9998;
+  opacity:1;
+  transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+}
+.preloader img{
+  position:fixed;
+  z-index:9999;
+  top:40%;
+  left:45%;
+}

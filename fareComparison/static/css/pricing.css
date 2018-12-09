@@ -1,0 +1,321 @@
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-heading {
+  max-width: 700px;
+}
+
+.btnsize {
+    max-width: 200px;
+    position:relative;
+    left:20%;
+
+}
+
+.panel-deck .panel {
+  min-width: 220px;
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: white;
+  background-clip: border-box;
+  border: solid lightblue;
+  @include border-radius($panel-border-radius);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($panel-border-radius);
+    }
+  }
+
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($panel-border-radius);
+    }
+  }
+}
+
+.panel-body {
+  // Enable `flex-grow: 1` for decks and groups so that panel blocks take up
+  // as much space as possible, ensuring footers are aligned to the bottom.
+  flex: 1 1 auto;
+  padding: $panel-spacer-x;
+}
+
+
+.panel-heading {
+  margin-bottom: 0; // Removes the default margin-bottom of <hN>
+  background-color: blue;
+  border-bottom: solid grey;
+}
+
+
+.panel-title {
+  margin-bottom: $panel-spacer-y;
+}
+
+.panel-subtitle {
+  margin-top: -($panel-spacer-y / 2);
+  margin-bottom: 0;
+}
+
+
+
+
+
+.panel-text:last-child {
+  margin-bottom: 0;
+}
+
+.panel-link {
+  @include hover {
+    text-decoration: none;
+  }
+
+  + .panel-link {
+    margin-left: $panel-spacer-x;
+  }
+}
+
+//
+// Optional textual caps
+//
+
+
+.panel-footer {
+  padding: $panel-spacer-y $panel-spacer-x;
+  background-color: $panel-cap-bg;
+  border-top: $panel-border-width solid $panel-border-color;
+
+  &:last-child {
+    @include border-radius(0 0 $panel-inner-border-radius $panel-inner-border-radius);
+  }
+}
+
+
+//
+// heading navs
+//
+
+.panel-heading-tabs {
+  margin-right: -($panel-spacer-x / 2);
+  margin-bottom: -$panel-spacer-y;
+  margin-left: -($panel-spacer-x / 2);
+  border-bottom: 0;
+}
+
+.panel-heading-pills {
+  margin-right: -($panel-spacer-x / 2);
+  margin-left: -($panel-spacer-x / 2);
+}
+
+// panel image
+.panel-img-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: $panel-img-overlay-padding;
+}
+
+.panel-img {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-radius($panel-inner-border-radius);
+}
+
+// panel image caps
+.panel-img-top {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-top-radius($panel-inner-border-radius);
+}
+
+.panel-img-bottom {
+  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-bottom-radius($panel-inner-border-radius);
+}
+
+
+// panel deck
+
+.panel-deck {
+  display: flex;
+  flex-direction: column;
+
+  .panel {
+    margin-bottom: $panel-deck-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-flow: row wrap;
+    margin-right: -$panel-deck-margin;
+    margin-left: -$panel-deck-margin;
+
+    .panel {
+      display: flex;
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      flex: 1 0 0%;
+      flex-direction: column;
+      margin-right: $panel-deck-margin;
+      margin-bottom: 0; // Override the default
+      margin-left: $panel-deck-margin;
+    }
+  }
+}
+
+
+//
+// panel groups
+//
+
+.panel-group {
+  display: flex;
+  flex-direction: column;
+
+  // The child selector allows nested `.panel` within `.panel-group`
+  // to display properly.
+  > .panel {
+    margin-bottom: $panel-group-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-flow: row wrap;
+    // The child selector allows nested `.panel` within `.panel-group`
+    // to display properly.
+    > .panel {
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      flex: 1 0 0%;
+      margin-bottom: 0;
+
+      + .panel {
+        margin-left: 0;
+        border-left: 0;
+      }
+
+      // Handle rounded corners
+      @if $enable-rounded {
+        &:first-child {
+          @include border-right-radius(0);
+
+          .panel-img-top,
+          .panel-heading {
+            border-top-right-radius: 0;
+          }
+          .panel-img-bottom,
+          .panel-footer {
+            border-bottom-right-radius: 0;
+          }
+        }
+
+        &:last-child {
+          @include border-left-radius(0);
+
+          .panel-img-top,
+          .panel-heading {
+            border-top-left-radius: 0;
+          }
+          .panel-img-bottom,
+          .panel-footer {
+            border-bottom-left-radius: 0;
+          }
+        }
+
+        &:only-child {
+          @include border-radius($panel-border-radius);
+
+          .panel-img-top,
+          .panel-heading {
+            @include border-top-radius($panel-border-radius);
+          }
+          .panel-img-bottom,
+          .panel-footer {
+            @include border-bottom-radius($panel-border-radius);
+          }
+        }
+
+        &:not(:first-child):not(:last-child):not(:only-child) {
+          @include border-radius(0);
+
+          .panel-img-top,
+          .panel-img-bottom,
+          .panel-heading,
+          .panel-footer {
+            @include border-radius(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//
+// Columns
+//
+
+.panel-columns {
+  .panel {
+    margin-bottom: $panel-columns-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
+    column-count: $panel-columns-count;
+    column-gap: $panel-columns-gap;
+    orphans: 1;
+    widows: 1;
+
+    .panel {
+      display: inline-block; // Don't let them vertically span multiple columns
+      width: 100%; // Don't let their width change
+    }
+  }
+}
+
+
+//
+// Accordion
+//
+
+.accordion {
+  .panel:not(:first-of-type):not(:last-of-type) {
+    border-bottom: 0;
+    border-radius: 0;
+  }
+
+  .panel:not(:first-of-type) {
+    .panel-heading:first-child {
+      border-radius: 0;
+    }
+  }
+
+  .panel:first-of-type {
+    border-bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .panel:last-of-type {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
